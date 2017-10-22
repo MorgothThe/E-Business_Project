@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/E-Business_Project -Dhttp.port=${PORT}
+web: target/universal/stage/bin/get-smart-play -Dhttp.port=${PORT}
