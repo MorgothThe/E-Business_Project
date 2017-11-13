@@ -1,11 +1,12 @@
 package models;
 
-import io.ebean.Finder;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "security.account")
@@ -23,11 +24,7 @@ public class Account{
     public Date passwordChanged;
     public Date createdAt;
 
-    public static Finder<Integer, Account> find = new Finder<>(Account.class);
-
-    public static Account findByID(Integer id)
-    {
-        return find.byId(id);
-    }
+    @OneToMany(mappedBy = "account")
+    public List<AccountRole> accountRoleList;
 
 }
