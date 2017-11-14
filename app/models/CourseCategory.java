@@ -1,33 +1,49 @@
 package models;
 
+import io.ebean.Finder;
 import io.ebean.Model;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-
 @Entity
-@Table(name="site.course_category")
-public class CourseCategory extends Model{
+@Table(name = "site.course_category")
+public class CourseCategory extends Model {
 
     @EmbeddedId
-    public CourseCategoryPK pk;
+    public CourseCategoryPk pk;
 
     @ManyToOne
-    @JoinColumn(name="category_id", insertable = false, updatable = false)
-    public Category category;
-
-    @ManyToOne
-    @JoinColumn(name="course_id", insertable = false, updatable = false)
     public Course course;
 
-    @Embeddable
-    public class CourseCategoryPK implements Serializable{
+    @ManyToOne
+    public Category category;
 
-        @Column(name="course_id")
-        public Course course;
-        @Column(name="category_id")
+    @Embeddable
+    public static class CourseCategoryPk implements Serializable{
+
+        @Column(name = "category_id")
         public Category category;
+
+        @Column(name = "course_id")
+        public Course course;
+
+
+        public CourseCategoryPk(){
+
+        }
+
+        @Override
+        public int hashCode() {
+            return super.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return super.equals(obj);
+        }
     }
+
+    public static final Finder<Long, CourseCategory> find = new Finder<>(CourseCategory.class);
 
 }

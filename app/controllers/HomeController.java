@@ -1,6 +1,10 @@
 package controllers;
 
+import models.CourseCategory;
+import models.User;
 import play.mvc.*;
+
+import java.util.List;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -15,6 +19,10 @@ public class HomeController extends Controller {
      * <code>GET</code> request with a path of <code>/</code>.
      */
     public Result index() {
+
+//        List<CourseCategory> courseCategories = CourseCategory.find.all();
+//        List<User> users = User.find.all();
+
 
         return ok(views.html.index.render());
     }
