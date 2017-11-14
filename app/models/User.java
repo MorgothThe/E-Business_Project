@@ -12,8 +12,13 @@ public class User {
 
     //not sure
 
-    @PrimaryKeyJoinColumn(name = "id")
-    public Account id;
+    @Id
+    public Integer id;
+
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    public Account account;
 
     public String firstName;
     public String middleName;
@@ -22,9 +27,12 @@ public class User {
     public Integer age;
     public String description;
 
-//    @OneToMany(mappedBy = "user")
-//    public List<Contact> contactList;
 
+    @OneToMany(mappedBy = "user")
+    public List<Contact> contactList;
+//
+    @OneToMany(mappedBy = "participant")
+    public List<CourseParticipant> courseParticipantList;
 
     public static final Finder<Long, User> find = new Finder<>(User.class);
 

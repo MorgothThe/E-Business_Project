@@ -9,8 +9,11 @@ public class Contact {
     @Id
     public Integer id;
 
-//    @ManyToOne
-//    public User user;
+    @ManyToOne
+    public ContactType contactType;
+
+    @ManyToOne
+    public User user;
 
     public String contact;
 }

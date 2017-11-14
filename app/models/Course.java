@@ -30,4 +30,7 @@ public class Course extends Model{
 
     @OneToMany(mappedBy = "course")
     public List<CourseMeeting> courseMeetingList;
+
+    @OneToMany(mappedBy = "course")
+    public List<CourseParticipant> courseParticipantList;
 }
