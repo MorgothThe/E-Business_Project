@@ -44,6 +44,5 @@ public class CourseCategory extends Model {
         }
     }
 
-    public static final Finder<Long, CourseCategory> find = new Finder<>(CourseCategory.class);
 
 }

@@ -17,4 +17,7 @@ public class City {
 
     @OneToMany(mappedBy = "city")
     public List<CountryRegionCity> countryRegionCityList;
+
+//    @OneToMany(mappedBy = "city")
+//    public List<CourseLocation> courseLocationList;
 }
