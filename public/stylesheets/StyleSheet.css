@@ -21,6 +21,11 @@
     text-align: center;
 }
 
+.form h2 {
+    font-family: "Roboto", sans-serif;
+    color: #000;
+}
+
 .form input{
     font-family: "Roboto", sans-serif;
     outline: 1;
