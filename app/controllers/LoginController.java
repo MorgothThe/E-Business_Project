@@ -28,11 +28,14 @@ public class LoginController extends Controller {
         PasswordManager passwordManager = new PasswordManager();
         if(accountRepository.usernameExist(username))
         {
+
             String salt = accountRepository.getSalt(username);
             String hash = accountRepository.getHash(username);
             if(passwordManager.isPasswordCorrect(password, salt, hash))
             {
-                return ok("LOGGED IN");
+                session("username", username);
+
+                return redirect("/");
             }
             else
             {
@@ -43,6 +46,13 @@ public class LoginController extends Controller {
         {
             return ok("USER DOES NOT EXIST");
         }
+    }
+
+    public Result logout(){
+
+        session().remove("username");
+
+        return redirect("/");
     }
 
     public Result register(){

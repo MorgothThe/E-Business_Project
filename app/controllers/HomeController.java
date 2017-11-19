@@ -1,5 +1,6 @@
 package controllers;
 
+import models.CourseCategory;
 import play.mvc.*;
 
 /**
@@ -16,8 +17,11 @@ public class HomeController extends Controller {
      */
     public Result index() {
 
-        return ok(views.html.index.render());
+        String user = session("username");
+
+        return ok(views.html.index.render(user));
     }
+
 
 
 
