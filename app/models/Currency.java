@@ -1,7 +1,5 @@
 package models;
 
-import io.ebean.Model;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -10,14 +8,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "site.currency")
-public class Currency extends Model{
+public class Currency {
 
     @Id
     public Integer id;
+
     public String name;
     public String symbol;
 
-    @OneToMany(mappedBy = "currency")
+    @OneToMany(mappedBy = "course")
     public List<Course> courseList;
 
 }

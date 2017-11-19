@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,18 +9,18 @@
 <body>
     <div class="login-page">
         <div class="form">
-            <form class="register-form" method="post" action="@routes.LoginController.register">
-                <input type="text" placeholder="username" name="registerUsername" />
-                <input type="password" placeholder="password" name="registerPassword"/>
-                <input type="email" placeholder="email id" name="registerEmail"/>
+            <form class="register-form">
+                <input type="text" placeholder="username" />
+                <input type="password" placeholder="password" />
+                <input type="email" placeholder="email address" />
                 <button>Create</button>
                 <p class="message">Already Registered? <a href="#">Log in</a>
                 </p>
             </form>
 
-            <form class="login-form" method="post" action="@routes.LoginController.login">
-                <input type="text" placeholder="user name" name="loginUsername"/>
-                <input type="password" placeholder="password"  name="loginPassword"/>
+            <form class="login-form">
+                <input type="text" placeholder="user name"/>
+                <input type="password" placeholder="password" />
                 <button>login</button>
                     <p class="message">Not Registered? <a href="#">Register</a>
                     </p>

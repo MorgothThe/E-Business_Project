@@ -12,7 +12,6 @@ public class Region {
 
     @Id
     public Integer id;
-
     public String name;
 
     @OneToMany(mappedBy = "region")
