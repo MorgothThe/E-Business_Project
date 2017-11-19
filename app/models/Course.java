@@ -31,12 +31,12 @@ public class Course extends Model{
     public Timestamp created_at;
 
 
-    @OneToMany(mappedBy = "pk.course")
+    @OneToMany(mappedBy = "course")
     public List<CourseCategory> courseCategoryList;
 
     @OneToMany(mappedBy = "course")
     public List<CourseParticipant> courseParticipantList;
 
-//    @OneToMany(mappedBy = "course")
-//    public List<CourseLocation> courseLocationList;
+    @OneToMany(mappedBy = "course")
+    public List<CourseLocation> courseLocationList;
 }

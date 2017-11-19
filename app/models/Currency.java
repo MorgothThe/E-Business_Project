@@ -16,7 +16,7 @@ public class Currency {
     public String name;
     public String symbol;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "currency")
     public List<Course> courseList;
 
 }

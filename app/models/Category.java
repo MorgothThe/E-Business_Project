@@ -20,6 +20,6 @@ public class Category extends Model{
     public String name;
     public String description;
 
-    @OneToMany(mappedBy = "pk.category")
+    @OneToMany(mappedBy = "category")
     public List<CourseCategory> courseCategoryList;
 }

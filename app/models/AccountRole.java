@@ -1,16 +1,15 @@
 package models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="security.account_role")
 public class AccountRole {
 
-    //TODO id
+    @EmbeddedId
+    public AccountRolePk pk;
 
     @ManyToOne
     @JoinColumn(name="account_id")
@@ -19,4 +18,28 @@ public class AccountRole {
     @ManyToOne
     @JoinColumn(name="role_id")
     public Role role;
+
+    @Embeddable
+    public static class AccountRolePk implements Serializable{
+
+        @Column(name = "account_id")
+        public Account account;
+
+        @Column(name = "role_id")
+        public Role role;
+
+        public AccountRolePk(){
+
+        }
+
+        @Override
+        public int hashCode() {
+            return super.hashCode();
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return super.equals(obj);
+        }
+    }
 }
