@@ -4,44 +4,50 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "site.country_region_city")
+@Table(name="site.country_region_city")
 public class CountryRegionCity {
 
-    @EmbeddedId
-    public CountryRegionCityPk pk;
+/*    @ManyToOne
+    public Integer country_id;
+
+    @Embeddable
+    public class CountryRegionCityKey {
+
+        @ManyToOne
+        public Integer city_id;
+        @ManyToOne
+        public Integer region_id;
+    }*/
+
+//    @EmbeddedId
+//    public CountryRegionCityPK pk;
 
     @ManyToOne
+    @JoinColumn(name = "city_id")
     public City city;
 
     @ManyToOne
+    @JoinColumn(name = "region_id")
     public Region region;
 
     @ManyToOne
+    @JoinColumn(name="country_id")
     public Country country;
 
-    @Embeddable
-    public static class CountryRegionCityPk implements Serializable{
-
+    /*@Embeddable
+    public class CountryRegionCityPK implements Serializable{
         @Column(name = "city_id")
-        public City city;
-
+        public City city_id;
         @Column(name = "region_id")
-        public Region region;
+        public Region region_id;
 
-        public CountryRegionCityPk(){
-
+        CountryRegionCityPK(City city, Region region){
+            this.City
         }
 
-        @Override
-        public int hashCode() {
-            return super.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-    }
-
+    }*/
 
 }
+
+
+

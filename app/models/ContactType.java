@@ -12,7 +12,6 @@ public class ContactType {
 
     @Id
     public Integer id;
-
     public String name;
 
     @OneToMany(mappedBy = "contactType")

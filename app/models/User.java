@@ -1,39 +1,38 @@
 package models;
 
-import io.ebean.Finder;
-
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "site.user")
+@Table(name="site.user")
 public class User {
-
-    //not sure
 
     @Id
     public Integer id;
 
 
-    @OneToOne
-    @JoinColumn(name = "id")
-    public Account account;
+    @ManyToOne
+    @JoinColumn(name="city_id")
+    public City city;
 
     public String firstName;
     public String middleName;
     public String lastName;
-    public Date birthDate;
+
+    public Timestamp birthDate;
     public Integer age;
     public String description;
 
-
     @OneToMany(mappedBy = "user")
     public List<Contact> contactList;
-//
+
+    @OneToMany(mappedBy = "teacher")
+    public List<Course> courseList;
+
     @OneToMany(mappedBy = "participant")
     public List<CourseParticipant> courseParticipantList;
 
-    public static final Finder<Long, User> find = new Finder<>(User.class);
-
+    @OneToMany(mappedBy = "reviewer")
+    public List<Review> reviewList;
 }

@@ -1,12 +1,16 @@
 package models;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "security.account")
-public class Account {
+public class Account{
 
     @Id
     public Integer id;

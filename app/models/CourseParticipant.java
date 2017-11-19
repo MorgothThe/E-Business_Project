@@ -1,44 +1,21 @@
 package models;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "site.course_participant")
+@Table(name="site.course_participant")
 public class CourseParticipant {
 
-    @EmbeddedId
-    public CourseParticipantPk pk;
-
     @ManyToOne
+    @JoinColumn(name="course_id")
     public Course course;
 
     @ManyToOne
+    @JoinColumn(name="paricipant_id")
     public User participant;
 
-    @Embeddable
-    public static class CourseParticipantPk implements Serializable{
-
-        @Column(name = "course_id")
-        public Course course;
-
-        @Column(name = "participant_id")
-        public User participant;
-
-        public CourseParticipantPk(){
-
-        }
-
-        @Override
-        public int hashCode() {
-            return super.hashCode();
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return super.equals(obj);
-        }
-    }
-
-
+    //TODO primary key
 }
