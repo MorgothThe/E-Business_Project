@@ -1,5 +1,9 @@
-﻿
-@main("Welcome to GetSmart", null) {
+@scripts = {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/StyleSheet.css")">
+}
+
+@main("Welcome to GetSmart", null, scripts) {
+
     <div class="login-page">
         <div class="form">
             <form class="register-form" method="post" action="@routes.LoginController.register">
@@ -21,3 +25,4 @@
         </div>
     </div>
 }
+

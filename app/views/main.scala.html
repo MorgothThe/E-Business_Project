@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, user: String)(content: Html)
+@(title: String, user: String, scripts: Html = Html(""))(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +14,18 @@
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/StyleSheet.css")">
+
+
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <link href="../../public/stylesheets/StyleSheet.css" rel="stylesheet" />
         <link href="../../public/stylesheets/main.css" rel="stylesheet" />
+
+        <script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
+        <script src="../../public/javascripts/main.js"></script>
+
+        @scripts
     </head>
 
     <body>
@@ -37,6 +45,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#">Category</a></li>
                         <li><a href="#contact">Contact</a></li>
                        @if(user == null){
                         <li><a href="@routes.LoginController.index()">Login</a></li>
@@ -72,13 +81,10 @@
 
         @* And here's where we render the `Html` object containing
          * the page content. *@
-        <div  class="container">
+        <div>
         @content
         </div>
 
-        <script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
 
     </body>
 </html>
