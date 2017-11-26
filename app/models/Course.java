@@ -27,7 +27,7 @@ public class Course extends Model{
     public Integer participants;
     public Integer max_participants;
     public BigDecimal price;
-    public Integer meetings;
+    public Integer mettings;
     public Timestamp created_at;
 
 

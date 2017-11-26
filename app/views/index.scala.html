@@ -1,6 +1,9 @@
+@(courses: List[Course])
+
 @scripts = {
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
 }
+
 
 @main("Welcome to GetSmart", scripts) {
 
@@ -52,6 +55,16 @@
 
     <section id="boxes">
         <div class="container">
+            @for(course <- courses){
+                <div class="box">
+                    <img src="../../public/images/newton.jpg" width="150" height="150">
+                    <h3>@course.name</h3>
+                    <p>
+                        @course.description
+                    </p>
+                        @course.price
+                </div>
+            }
             <div class="box">
                 <img src="../../public/images/newton.jpg" width="150" height="150">
                 <h3>Classical Mechanics</h3>
