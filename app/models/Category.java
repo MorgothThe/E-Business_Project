@@ -22,4 +22,5 @@ public class Category extends Model{
 
     @OneToMany(mappedBy = "category")
     public List<CourseCategory> courseCategoryList;
+
 }

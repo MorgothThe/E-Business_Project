@@ -1,5 +1,6 @@
 package controllers;
 
+import models.CourseCategory;
 import play.mvc.*;
 
 /**
@@ -18,6 +19,7 @@ public class HomeController extends Controller {
 
         return ok(views.html.index.render());
     }
+
 
 
 
