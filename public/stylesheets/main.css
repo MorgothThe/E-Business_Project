@@ -150,3 +150,12 @@ footer {
 .show {
     display: block;
 }
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: block;
+    overflow-y: auto;
+}
