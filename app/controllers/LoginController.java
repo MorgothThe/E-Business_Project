@@ -6,6 +6,7 @@ import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import repositories.AccountRepository;
+import repositories.UserRepository;
 
 import javax.inject.Inject;
 
@@ -16,6 +17,9 @@ public class LoginController extends Controller {
 
     @Inject
     private AccountRepository accountRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
     public Result index(){
         return ok(views.html.login.render());
@@ -34,6 +38,8 @@ public class LoginController extends Controller {
             if(passwordManager.isPasswordCorrect(password, salt, hash))
             {
                 session("username", username);
+                Integer accountID = accountRepository.getID(username);
+                session("accountID", accountID.toString());
                 flash("logged-in", "User has been succesfully logged in!");
                 return redirect("/");
             }
@@ -54,6 +60,7 @@ public class LoginController extends Controller {
 
         flash("logged-out", "You have successfully logged out");
         session().remove("username");
+        session().remove("accountID");
 
         return redirect("/");
     }
@@ -69,6 +76,8 @@ public class LoginController extends Controller {
             String salt = passwordManager.generateSalt();
             String hashedPassword = passwordManager.hashPassword(password, salt);
             accountRepository.createAccount(username, hashedPassword, salt, email);
+            Integer accountID = accountRepository.getID(username);
+            userRepository.createUser(accountID);
             return ok("NEW USER CREATED");
 
         }
