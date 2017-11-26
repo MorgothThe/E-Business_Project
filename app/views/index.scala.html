@@ -1,12 +1,9 @@
-@(user: String)
-
 @scripts = {
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
 }
 
-@main("Welcome to GetSmart", user, scripts) {
+@main("Welcome to GetSmart", scripts) {
 
-    @user
     <section id="showcase">
         <div class="container">
             <h1><span class="highlight">Exchange</span> your Knowledge</h1>
