@@ -2,7 +2,10 @@ package repositories;
 
 import io.ebean.Ebean;
 import models.Account;
+import models.AccountRole;
+import models.Role;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +66,23 @@ public class AccountRepository extends GenericRepository<Account> {
                 .findUnique();
         return account.passwordSalt;
     }
+
+    public List<Role> getRoles(String username){
+        Account fetchedAccount = Ebean.find(typeParameterClass)
+                .fetch("accountRoleList")
+                .fetch("accountRoleList.role")
+                .where()
+                .eq("username", username)
+                .findUnique();
+
+        List<Role> roles = new ArrayList<Role>();
+        for (AccountRole accountRole : fetchedAccount.accountRoleList) {
+            roles.add(accountRole.role);
+        }
+        return roles;
+    }
+
+
 
     public void createAccount(String username, String passwordHash, String passwordSalt, String email){
         Account account = new Account();
