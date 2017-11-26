@@ -45,7 +45,16 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#">Category</a></li>
+                        <li>
+                            <div class="dropdown nav-item">
+                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Category</a>
+                                 <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="#" title="abc"> abc</a>
+                                      <a class="dropdown-item" href="#" title=" xyz"> xyz</a>
+                                      <a class="dropdown-item" href="#" title="qwe"> qwe</a>
+                                 </div>
+                            </div>
+                        </li>
                         <li><a href="#contact">Contact</a></li>
                        @if(user == null){
                         <li><a href="@routes.LoginController.index()">Login</a></li>
