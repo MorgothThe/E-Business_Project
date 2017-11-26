@@ -34,22 +34,25 @@ public class LoginController extends Controller {
             if(passwordManager.isPasswordCorrect(password, salt, hash))
             {
                 session("username", username);
-
+                flash("logged-in", "User has been succesfully logged in!");
                 return redirect("/");
             }
             else
             {
-                return ok("PASSWORD INCORRECT");
+                flash("password-incorect", "The password is not correct");
+                return redirect("/");
             }
         }
         else
         {
-            return ok("USER DOES NOT EXIST");
+            flash("no-user", "The user does not exist");
+            return redirect("/");
         }
     }
 
     public Result logout(){
 
+        flash("logged-out", "You have successfully logged out");
         session().remove("username");
 
         return redirect("/");

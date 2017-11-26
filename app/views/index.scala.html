@@ -4,6 +4,34 @@
 
 @main("Welcome to GetSmart", scripts) {
 
+
+
+    @if(flash.containsKey("logged-in")) {
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @flash.get("logged-in")
+        </div>
+    }
+    @if(flash.containsKey("password-incorect")) {
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @flash.get("password-incorect")
+        </div>
+    }
+    @if(flash.containsKey("no-user")) {
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @flash.get("no-user")
+        </div>
+    }
+    @if(flash.containsKey("logged-out")) {
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @flash.get("logged-out")
+        </div>
+    }
+
+
     <section id="showcase">
         <div class="container">
             <h1><span class="highlight">Exchange</span> your Knowledge</h1>
