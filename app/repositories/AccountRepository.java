@@ -4,6 +4,7 @@ import io.ebean.Ebean;
 import models.Account;
 import models.AccountRole;
 import models.Role;
+import models.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +42,14 @@ public class AccountRepository extends GenericRepository<Account> {
         else{
             return true;
         }
+    }
+
+    public int getID(String username){
+        Account account = Ebean.find(typeParameterClass)
+                .where()
+                .eq("username", username)
+                .findUnique();
+        return account.id;
     }
 
     public Account getByUsername(String usernameValue){
