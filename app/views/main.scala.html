@@ -14,6 +14,7 @@
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
@@ -21,8 +22,9 @@
         <script src="@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("javascripts/bootstrap.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
-
+        <script src="@routes.Assets.versioned("javascripts/dropdown.js")" type ="text/javascript"></script>
         @scripts
+
     </head>
 
     <body>
@@ -43,14 +45,16 @@
                         <li class="active"><a href="@routes.HomeController.index()">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li>
-                            <div class="dropdown nav-item">
-                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Category</a>
-                                 <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#" title="abc"> abc</a>
-                                      <a class="dropdown-item" href="#" title=" xyz"> xyz</a>
-                                      <a class="dropdown-item" href="#" title="qwe"> qwe</a>
-                                 </div>
-                            </div>
+                            <div class="dropdown">
+                                <button class="dropbtn">Category
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Link 1</a>
+                                    <a href="#">Link 2</a>
+                                    <a href="#">Link 3</a>
+                                </div>
+                            </div> 
                         </li>
                         <li><a href="#contact">Contact</a></li>
                        @if(session.get("username")){
@@ -82,7 +86,5 @@
         <div>
         @content
         </div>
-
-
     </body>
 </html>
