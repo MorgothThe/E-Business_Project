@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, scripts: Html = Html(""))(content: Html)
+@(title: String, scripts: Html = Html(""), categories: List[Category])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,9 +49,10 @@
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    @if(categories != null){
+                                    @for(category <- categories){
+                                    <a href="@routes.CourseController.searchByCategory(category.id)">@category.name</a>
+                                    }}
                                 </div>
                             </div> 
                         </li>
@@ -67,12 +68,14 @@
                 @if(!request.uri.equals("/login")){
                     <ul>
                         <li class="box">
+
                             <div class="container-1">
                                 <span class="icon"><i class="fa fa-search"></i></span>
                                 @helper.form(routes.CourseController.search()){
                                     <input type="search" id="search" name="search" placeholder="Search..." />
                                 }
                             </div>
+
                         </li>
                     </ul>
                 }

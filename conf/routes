@@ -2,13 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
+
+#HomeController
 GET     /                           controllers.HomeController.index
+
+#LoginController
 GET     /login                      controllers.LoginController.index
+GET     /logout                     controllers.LoginController.logout
+
 +nocsrf
 POST    /login/submit               controllers.LoginController.login
 +nocsrf
 POST    /register/submit            controllers.LoginController.register
+
 
 
 #CourseController
@@ -16,6 +22,7 @@ GET     /course/:id                 controllers.CourseController.index(id: Integ
 GET     /search                     controllers.CourseController.search()
 GET     /myteachercourses           controllers.CourseController.myTeacherCourses
 GET     /mystudentcourses           controllers.CourseController.myStudentCourses
+GET     /searchbycategory/:categoryID          controllers.CourseController.searchByCategory(categoryID: Integer)
 
 +nocsrf
 GET    /logout                     controllers.LoginController.logout
