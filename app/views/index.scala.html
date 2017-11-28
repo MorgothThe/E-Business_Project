@@ -1,7 +1,7 @@
 @(courses: List[Course])
 
 @scripts = {
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
 }
 
 
@@ -57,29 +57,27 @@
         <div class="container">
             @for(course <- courses){
                 <div class="box">
-                    <img src="../../public/images/newton.jpg" width="150" height="150">
-                    <h3>@course.name</h3>
-                    <p>
-                        @course.description
-                    </p>
+                    <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+                    <a href="@routes.CourseController.index"><h3>@course.name</h3></a>
+                        <p>
+                            @course.description
+                        </p>
                         @course.price
-                </div>
+</div>
             }
             <div class="box">
-                <img src="../../public/images/newton.jpg" width="150" height="150">
-                <h3>Classical Mechanics</h3>
-                <p>
-                    Learn the basic laws ruling motion as we know it in our
-                    everyday life
-                </p>
-            </div>
+                <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+                <a href="@routes.CourseController.index"><h3>Arduino</h3></a>
+                    <p>
+                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releas
+                    </p>
+</div>
 
             <div class="box">
-                <img src="../../public/images/oil.jpg" width="150" height="150">
+                <img width="150" height="150" src='@routes.Assets.versioned("images/newton.png")'/>
                 <h3>Perspective in Oil Painting</h3>
                 <p>
-                    Learn to easily create perspective
-                    sensations in your oil paintings
+                    book. It has survived not only five centu
                 </p>
             </div>
 
@@ -90,8 +88,4 @@
             </div>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; Team GetSmart 2017</p>
-    </footer>
 }
