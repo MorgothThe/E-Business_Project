@@ -57,18 +57,15 @@
         <div class="container">
             @for(course <- courses){
                 <div class="box">
-                    <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
-                    <a href="@routes.CourseController.index"><h3>@course.name</h3></a>
+                    <a href="@routes.CourseController.index(course.id)">
+                        <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+                    </a>
+                    <a href="@routes.CourseController.index(course.id)"><h3>@course.name</h3></a>
                         <p>
                             @course.description
                         </p>
-                    <a href="@routes.CourseController.index(course.id)">
-                        <img src="../../public/images/newton.jpg" width="150" height="150"/>
-                    </a>
-                    <h3>@course.name</h3>
-                    <p>
-                        @course.description
-                    </p>
+
+
                         @course.price
                 </div>
             }

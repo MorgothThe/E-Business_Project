@@ -38,7 +38,9 @@ public class CourseController extends Controller {
         String searchTerm = requestData.get("search");
         searchTerm = "%" + searchTerm + "%";
         List<Course> courseList = courseRepository.search(searchTerm);
-        return ok(views.html.index.render(courseList));
+        List<Category> categoryList = categoryRepository.getAll();
+
+        return ok(views.html.index.render(courseList, categoryList));
     }
 
 

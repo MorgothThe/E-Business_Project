@@ -24,10 +24,6 @@ GET     /myteachercourses           controllers.CourseController.myTeacherCourse
 GET     /mystudentcourses           controllers.CourseController.myStudentCourses
 GET     /searchbycategory/:categoryID          controllers.CourseController.searchByCategory(categoryID: Integer)
 
-+nocsrf
-GET    /logout                     controllers.LoginController.logout
-+nocsrf
-GET    /course                     controllers.CourseController.index
 
 
 # Map static resources from the /public folder to the /assets URL path
