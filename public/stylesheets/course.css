@@ -1,1 +1,82 @@
-﻿
+﻿html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.main {
+    height: calc(100% - 93px);
+}
+
+.course_header_container {
+    width: 100%;
+    padding-left: 7.5%;
+    padding-top: 30px;
+    background-color: #f5f5f5;
+    height: 210px;
+    margin-top: -18px;
+}
+
+.course_img {
+    float: left;
+    border: solid;
+    border-width: 1px;
+}
+
+.course_header {
+    float: left;
+    display: inline-block;
+    width: calc(100% - 250px);
+    margin-left: 15px;
+    text-align: justify;
+}
+
+
+.dropdown .dropbtn {
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: #9d9d9d;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #777;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+footer {
+    padding: 6px;
+    text-align: center;
+    background: #000000;
+    color: aliceblue;
+}

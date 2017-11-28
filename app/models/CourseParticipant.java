@@ -14,7 +14,7 @@ public class CourseParticipant {
     public Course course;
 
     @ManyToOne
-    @JoinColumn(name="participant_id")
+    @JoinColumn(name="paricipant_id")
     public User participant;
 
     //TODO primary key
