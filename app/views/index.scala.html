@@ -1,7 +1,7 @@
 @(courses: List[Course])
 
 @scripts = {
-    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
 }
 
 
@@ -57,6 +57,11 @@
         <div class="container">
             @for(course <- courses){
                 <div class="box">
+                    <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+                    <a href="@routes.CourseController.index"><h3>@course.name</h3></a>
+                        <p>
+                            @course.description
+                        </p>
                     <a href="@routes.CourseController.index(course.id)">
                         <img src="../../public/images/newton.jpg" width="150" height="150"/>
                     </a>
@@ -69,8 +74,4 @@
             }
         </div>
     </section>
-
-    <footer>
-        <p>&copy; Team GetSmart 2017</p>
-    </footer>
 }

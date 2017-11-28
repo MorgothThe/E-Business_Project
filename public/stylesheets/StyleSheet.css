@@ -108,3 +108,11 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+footer {
+    padding: 6px;
+    margin-top: 100px;
+    text-align: center;
+    background: #000000;
+    color: aliceblue;
+}

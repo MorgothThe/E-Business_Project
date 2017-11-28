@@ -1,25 +1,19 @@
-﻿
-@main("Welcome to GetSmart"){
-<div id="page" class="container-fluid">
-    <div id="learningcontent">
-        <header id="page-header" class="row">
-            <div class="col-xs-12 p-a-1">
-                <div class="card">
-                    <div class="headerfade">
-                        <div class="card-block">
-                            <div class="pull-xs-left"><div class="page-context-header"><div class="page-header-headings"><h1>Java</h1></div></div></div><div class="clearfix w-100 pull-xs-left" id="page-navbar">
-                                <div class="breadcrumb-nav">
-                                    <nav role="navigation">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">mainpage</a></li>
-                                            <li class="breadcrumb-item">My courses</li>
-                                        </ol>
-                                    </nav>
-                                </div><div class="breadcrumb-button pull-xs-right"></div>
-                            </div><div id="course-header"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+﻿@scripts = {
+    <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/course.css")'/>
+}
+
+@main("Welcome to GetSmart",scripts){
+<div class="course_header_container">
+    <span class="course_img">
+        <img alt="arduino" width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+    </span>
+    <span class="course_header">
+        <h2>Arduino</h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset she</p>
+    </span>
+</div>
+
+<div class="middle-container">
+
+</div>
 }
