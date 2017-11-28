@@ -41,4 +41,15 @@ public class CourseRepository extends GenericRepository<Course> {
                 .findList();
         return courses;
     }
+
+    public List<Course> getByCategoryID(Integer id){
+        List<Course> beforeQuery = getAll();
+        List<Course> courses = Ebean
+                .find(typeParameterClass)
+                .fetch("courseCategoryList")
+                .where()
+                .eq("courseCategoryList.category.id", id)
+                .findList();
+        return courses;
+    }
 }

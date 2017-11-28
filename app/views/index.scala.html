@@ -1,11 +1,11 @@
-@(courses: List[Course])
+@(courses: List[Course], categories: List[Category])
 
 @scripts = {
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
 }
 
 
-@main("Welcome to GetSmart", scripts) {
+@main("Welcome to GetSmart", scripts, categories) {
 
 
 

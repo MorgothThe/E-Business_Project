@@ -1,8 +1,9 @@
 package controllers;
 
+import models.Category;
 import models.Course;
-import models.CourseCategory;
 import play.mvc.*;
+import repositories.CategoryRepository;
 import repositories.CourseRepository;
 
 import javax.inject.Inject;
@@ -18,6 +19,9 @@ public class HomeController extends Controller {
     @Inject
     private CourseRepository courseRepository;
 
+    @Inject
+    private CategoryRepository categoryRepository;
+
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -27,14 +31,11 @@ public class HomeController extends Controller {
      */
     public Result index() {
 
-
         List<Course> courseList = courseRepository.getAll();
+        List<Category> categoryList = categoryRepository.getAll();
 
-
-        return ok(views.html.index.render(courseList));
+        return ok(views.html.index.render(courseList, categoryList));
     }
-
-
 
 
 }

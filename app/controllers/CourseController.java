@@ -1,8 +1,10 @@
 package controllers;
 
+import models.Category;
 import models.Course;
 import play.mvc.Controller;
 import play.mvc.Result;
+import repositories.CategoryRepository;
 import repositories.CourseRepository;
 
 import javax.inject.Inject;
@@ -12,6 +14,16 @@ public class CourseController extends Controller {
 
     @Inject
     private CourseRepository courseRepository;
+
+    @Inject
+    private CategoryRepository categoryRepository;
+
+
+    public Result searchByCategory(Integer categoryID){
+        List<Course> courseList = courseRepository.getByCategoryID(categoryID);
+        List<Category> categoryList = categoryRepository.getAll();
+        return ok(views.html.index.render(courseList, categoryList));
+    }
 
     public Result search(String searchTerm){
         searchTerm = "%" + searchTerm + "%";
