@@ -17,7 +17,7 @@ POST    /register/submit            controllers.LoginController.register
 
 #CourseController
 GET     /course/:id                 controllers.CourseController.index(id: Integer)
-GET     /search/:searchTerm         controllers.CourseController.search(searchTerm: String)
+GET     /search                     controllers.CourseController.search()
 GET     /myteachercourses           controllers.CourseController.myTeacherCourses
 GET     /mystudentcourses           controllers.CourseController.myStudentCourses
 

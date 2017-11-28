@@ -1,6 +1,8 @@
 package controllers;
 
 import models.Course;
+import play.data.DynamicForm;
+import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import repositories.CourseRepository;
@@ -13,16 +15,24 @@ public class CourseController extends Controller {
     @Inject
     private CourseRepository courseRepository;
 
-    public Result search(String searchTerm){
+
+    @Inject
+    private FormFactory formFactory;
+
+
+    public Result search(){
+        DynamicForm requestData = formFactory.form().bindFromRequest();
+        String searchTerm = requestData.get("search");
         searchTerm = "%" + searchTerm + "%";
         List<Course> courseList = courseRepository.search(searchTerm);
-        return ok("SEARCH TERM : " + searchTerm);
+        return ok(views.html.index.render(courseList));
     }
 
     public Result index(Integer id){
         Course course = courseRepository.findByID(id);
         return ok("COURSE DETAILS ID: " + id.toString());
     }
+
 
     public Result myTeacherCourses(){
         Integer teacherID = Integer.parseInt(session().get("accountID"));
