@@ -16,10 +16,11 @@ h1 {
 }
 
 .container {
-    width: 80%; 
-    margin: auto;
+    width: 95%; 
     padding: inherit;
     margin-bottom: -15px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
 #navbar {
@@ -67,7 +68,7 @@ h1 {
     #boxes .box {
         float: left;
         text-align: center;
-        width: 30%;
+        width: 32%;
         padding: 10px;
     }
 
