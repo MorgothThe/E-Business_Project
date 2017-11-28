@@ -33,7 +33,17 @@
         @flash.get("logged-out")
         </div>
     }
-
+    @if(flash.containsKey("new-user")) {
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @flash.get("new-user")
+        </div>
+    }@if(flash.containsKey("user-exists")) {
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @flash.get("user-exists")
+        </div>
+    }
 
     <section id="showcase">
         <div class="container">

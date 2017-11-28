@@ -78,12 +78,13 @@ public class LoginController extends Controller {
             accountRepository.createAccount(username, hashedPassword, salt, email);
             Integer accountID = accountRepository.getID(username);
             userRepository.createUser(accountID);
-            return ok("NEW USER CREATED");
+            flash("new-user", "User successfully created!");
+            return redirect("/");
 
         }
         else
         {
-            return ok("USER ALREADY EXISTS");
-        }
+            flash("user-exists", "User already exists!");
+            return redirect("/");        }
     }
 }
