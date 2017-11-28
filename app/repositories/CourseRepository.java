@@ -22,4 +22,23 @@ public class CourseRepository extends GenericRepository<Course> {
 
         return courses;
     }
+
+    public List<Course> getByTeacherID(Integer id){
+        List<Course> courses = Ebean
+                .find(typeParameterClass)
+                .where()
+                .eq("teacherID", id)
+                .findList();
+        return courses;
+    }
+
+    public List<Course> getByStudentID(Integer id){
+        List<Course> courses = Ebean
+                .find(typeParameterClass)
+                .fetch("courseParticipantList")
+                .where()
+                .eq("courseParticipantList.participant.id", id)
+                .findList();
+        return courses;
+    }
 }

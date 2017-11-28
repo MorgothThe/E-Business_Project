@@ -20,6 +20,19 @@ public class CourseController extends Controller {
     }
 
     public Result index(Integer id){
+        Course course = courseRepository.findByID(id);
         return ok("COURSE DETAILS ID: " + id.toString());
+    }
+
+    public Result myTeacherCourses(){
+        Integer teacherID = Integer.parseInt(session().get("accountID"));
+        List<Course> courseList = courseRepository.getByTeacherID(teacherID);
+        return ok("COURSES FOR TEACHER ID: " + teacherID.toString());
+    }
+
+    public Result myStudentCourses(){
+        Integer participantID = Integer.parseInt(session().get("accountID"));
+        List<Course> courseList = courseRepository.getByStudentID(participantID);
+        return ok("COURSES FOR STUDENT ID: " + participantID.toString());
     }
 }
