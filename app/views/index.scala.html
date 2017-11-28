@@ -57,7 +57,9 @@
         <div class="container">
             @for(course <- courses){
                 <div class="box">
-                    <img src="../../public/images/newton.jpg" width="150" height="150">
+                    <a href="@routes.CourseController.index(course.id)">
+                        <img src="../../public/images/newton.jpg" width="150" height="150"/>
+                    </a>
                     <h3>@course.name</h3>
                     <p>
                         @course.description
