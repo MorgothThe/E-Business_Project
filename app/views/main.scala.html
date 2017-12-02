@@ -75,9 +75,29 @@
                         @if(session.get("username")){
                         <li><a href="@routes.LoginController.logout()">Logout</a></li>
 
+<<<<<<< HEAD
                         } else {
                         <li><a href="@routes.LoginController.index()">Login</a></li>
                         }
+=======
+                       } else {
+                           <li><a href="@routes.LoginController.index()">Login</a></li>
+                       }
+                     </ul>
+                </div><!--/.nav-collapse -->
+                @if(!request.uri.equals("/login")){
+                    <ul>
+                        <li class="box">
+
+                            <div class="container-1">
+                                <span class="icon"><i class="fa fa-search"></i></span>
+                                @helper.form(routes.CourseController.search()){
+                                    <input type="search" id="search" name="search" placeholder="Search..." />
+                                }
+                            </div>
+
+                        </li>
+>>>>>>> a6ba9a126f1656720be687e34ddd6045d206740f
                     </ul>
                 </div><!--/.nav-collapse -->
 
