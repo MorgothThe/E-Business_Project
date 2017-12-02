@@ -1,3 +1,4 @@
+@import url('course.css');
 body {
     height: 100%;
     font: 15px/1.5;
@@ -30,7 +31,19 @@ h1 {
     margin-right: 2.5%;
 }
 
+.containers {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 95%;
+    padding: inherit;
+    margin-bottom: -15px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
 #navbar {
+    margin-top: -31px;
     float: right;
 }
 
@@ -81,10 +94,15 @@ h1 {
     }
 
 footer {
+    margin-top: 10px;
     padding: 6px;
     text-align: center;
     background: #000000;
     color: aliceblue;
+}
+
+footer p {
+    margin: 0;
 }
 
 /* Search */
@@ -146,6 +164,10 @@ footer {
     display: block;
 }
 
+.main {
+    height: calc(100% - 93px);
+    overflow: auto;
+}
 
 
 

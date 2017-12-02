@@ -4,7 +4,7 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String, scripts: Html = Html(""))(content: Html)
+@(title: String, scripts: Html = Html(""), categories: List[Category])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,9 +14,7 @@
         <title>@title</title>
         <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/bootstrap.min.css")'>
         <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/bootstrap-theme.min.css")'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
+ 
         <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
 
         <script type="text/javascript" src='@routes.Assets.versioned("javascripts/jquery-3.2.1.min.js")'></script>
@@ -39,41 +37,49 @@
                     </button>
                     <a class="navbar-brand" href="@routes.HomeController.index()">Get Smart</a>
                 </div>
+                
+                @if(!request.uri.equals("/login")){
+                    <ul>
+                        <li class="box">
+
+                            <div class="container-1">
+                                <span class="icon"><i class="fa fa-search"></i></span>
+                                @helper.form(routes.CourseController.search()){
+                                    <input type="search" id="search" name="search" placeholder="Search..." />
+                                }
+                            </div>
+
+                        </li>
+                    </ul>
+                }
+
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="@routes.HomeController.index()">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li>
                             <div class="dropdown">
-                                <button class="dropbtn">Category
+                                <button class="dropbtn">
+                                    Category
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="#">Link 1</a>
-                                    <a href="#">Link 2</a>
-                                    <a href="#">Link 3</a>
+                                    @if(categories != null){
+                                    @for(category <- categories){
+                                    <a href="@routes.CourseController.searchByCategory(category.id)">@category.name</a>
+                                    }}
                                 </div>
-                            </div> 
-                        </li>
-                        <li><a href="#contact">Contact</a></li>
-                       @if(session.get("username")){
-                           <li><a href="@routes.LoginController.logout()">Logout</a></li>
-
-                       } else {
-                           <li><a href="@routes.LoginController.index()">Login</a></li>
-                       }
-                     </ul>
-                </div><!--/.nav-collapse -->
-                @if(request.uri.equals("/")){
-                    <ul>
-                        <li class="box">
-                            <div class="container-1">
-                                <span class="icon"><i class="fa fa-search"></i></span>
-                                <input type="search" id="search" placeholder="Search..." />
                             </div>
                         </li>
+                        <li><a href="#contact">Contact</a></li>
+                        @if(session.get("username")){
+                        <li><a href="@routes.LoginController.logout()">Logout</a></li>
+
+                        } else {
+                        <li><a href="@routes.LoginController.index()">Login</a></li>
+                        }
                     </ul>
-                }
+                </div><!--/.nav-collapse -->
 
             </div>
         </nav>

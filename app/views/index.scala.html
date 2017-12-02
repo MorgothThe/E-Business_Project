@@ -1,11 +1,11 @@
-@(courses: List[Course])
+@(courses: List[Course], categories: List[Category])
 
 @scripts = {
     <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
 }
 
 
-@main("Welcome to GetSmart", scripts) {
+@main("Welcome to GetSmart", scripts, categories) {
 
 
 
@@ -33,7 +33,17 @@
         @flash.get("logged-out")
         </div>
     }
-
+    @if(flash.containsKey("new-user")) {
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @flash.get("new-user")
+        </div>
+    }@if(flash.containsKey("user-exists")) {
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @flash.get("user-exists")
+        </div>
+    }
 
     <section id="showcase">
         <div class="container">
@@ -54,45 +64,21 @@
     </section> -->
 
     <section id="boxes">
-        <div class="container">
+        <div class="containers">
             @for(course <- courses){
                 <div class="box">
-                    <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
-                    <a href="@routes.CourseController.index"><h3>@course.name</h3></a>
+                    <a href="@routes.CourseController.index(course.id)">
+                        <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+                    </a>
+                    <a href="@routes.CourseController.index(course.id)"><h3>@course.name</h3></a>
                         <p>
                             @course.description
                         </p>
-                    <a href="@routes.CourseController.index(course.id)">
-                        <img src="../../public/images/newton.jpg" width="150" height="150"/>
-                    </a>
-                    <h3>@course.name</h3>
-                    <p>
-                        @course.description
-                    </p>
+
+
                         @course.price
-</div>
+                </div>
             }
-            <div class="box">
-                <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
-                <a href="@routes.CourseController.index"><h3>Arduino</h3></a>
-                    <p>
-                         make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releas
-                    </p>
-</div>
-
-            <div class="box">
-                <img width="150" height="150" src='@routes.Assets.versioned("images/newton.png")'/>
-                <h3>Perspective in Oil Painting</h3>
-                <p>
-                    book. It has survived not only five centu
-                </p>
-            </div>
-
-            <div class="box">
-                <img src="../../public/images/arduino.png" width="150" height="150">
-                <h3>Arduino</h3>
-                <p>Arduino basic rules and commands. How to use.</p>
-            </div>
         </div>
     </section>
 }

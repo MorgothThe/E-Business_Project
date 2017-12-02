@@ -2,15 +2,30 @@
     <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/course.css")'/>
 }
 
-@main("Welcome to GetSmart",scripts){
-<div class="course_header_container">
-    <span class="course_img">
-        <img alt="arduino" width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
-    </span>
-    <span class="course_header">
-        <h2>Arduino</h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset she</p>
-    </span>
+@main("Welcome to GetSmart",scripts, null){
+<div>
+    <div class="course_header_container">
+        <span class="course_img">
+            <img alt="arduino" width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+        </span>
+        <span class="course_header">
+            <h2>Arduino</h2>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset she</p>
+        </span>
+        <div class="divhidden">
+            <div><p class="no-of-parti">Number of participants: 10</p></div>
+            <div>
+                <form class="btn" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="6RNT8A4HBBJRE">
+                    <input type="image"
+                           src='@routes.Assets.versioned("images/py-btn.png")' alt="Sign up">
+                    <img alt="" src='@routes.Assets.versioned("images/py-btn.png")'
+                         width="1" height="1">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="middle-container">
