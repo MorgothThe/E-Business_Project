@@ -72,7 +72,7 @@
                             </div>
                         </li>
                         <li><a href="#profile">Profile</a></li>
-                        <li><a href="#">Create</a></li>
+                        <li><a href="@routes.CourseController.newCourse()">Create</a></li>
                         @if(session.get("username")){
                         <li><a href="@routes.LoginController.logout()">Logout</a></li>
 

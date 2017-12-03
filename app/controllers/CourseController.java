@@ -89,7 +89,7 @@ public class CourseController extends Controller {
     }
 
     public Result newCourse(){
-        return ok("New course creation form");
+        return ok(views.html.create_course.render());
     }
 
     public Result createNewCourse(){
