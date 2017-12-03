@@ -18,6 +18,7 @@ import repositories.CourseRepository;
 import repositories.UserRepository;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CourseController extends Controller {
@@ -58,7 +59,13 @@ public class CourseController extends Controller {
 
     public Result index(Integer id){
         Course course = courseRepository.findByID(id);
-        return ok(views.html.course.render(course));
+        String accountID = session().get("accountID");
+        boolean isSignedUp = false;
+        if(accountID != null){
+            Integer participantID = Integer.parseInt(session().get("accountID"));
+            isSignedUp = courseRepository.isSignedUp(participantID, id);
+        }
+        return ok(views.html.course.render(course, isSignedUp));
     }
 
     public Result myTeacherCourses(){
@@ -73,10 +80,38 @@ public class CourseController extends Controller {
         return ok("COURSES FOR STUDENT ID: " + participantID.toString());
     }
 
-    public void signForCourse(Integer courseID){
+    public Result signForCourse(Integer courseID){
         Integer participantID = Integer.parseInt(session().get("accountID"));
         User user = userRepository.findByID(participantID);
         courseRepository.addParticipant(courseID, user);
+        flash("signed-up-for-course", "You have successfully sign up for this course");
+        return redirect("/");
+    }
+
+    public Result newCourse(){
+        return ok(views.html.create_course.render());
+    }
+
+    public Result createNewCourse(){
+        DynamicForm dynamicForm = formFactory.form().bindFromRequest();
+        String courseName = dynamicForm.get("courseName");
+        String courseDescription = dynamicForm.get("courseDescription");
+        String category = dynamicForm.get("category");
+        String stringPrice = dynamicForm.get("price");
+
+        BigDecimal price = new BigDecimal(stringPrice.replaceAll(",", ""));
+
+        Integer maxParticipants = Integer.parseInt(dynamicForm.get("maxParticipant"));
+
+        Integer teacherID = Integer.parseInt(session().get("accountID"));
+        User teacher = userRepository.findByID(teacherID);
+
+        courseRepository.createNewCourse(courseName, courseDescription, teacher, price, maxParticipants);
+
+        //currency
+        //mettings
+
+        return ok("New course created");
     }
 
 

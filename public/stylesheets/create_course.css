@@ -15,10 +15,10 @@ body {
 .back {
     padding: 15px;
     margin-bottom: 20px;
-    background-color: aliceblue;
     width: 30%;
     margin: 0 auto;
     padding-bottom: 10px;
+    float: left;
 }
 
 .foto {
@@ -30,15 +30,22 @@ body {
 }
 
 .letters {
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 20px;
-    background-color: aliceblue;
-    width: 30%;
+    width: 55%;
     margin: 0 auto;
+    margin-top: 294px;
+    margin-left: inherit;
 }
 
 .button-cre {
-    margin-left: 640px;
+    margin-left: 48px;
+}
+
+.btnn {
+    width: 100px;
+    height: 50px;
+    margin-left: 15px;
 }
 
 .create-h {
@@ -70,12 +77,16 @@ footer {
     float: right;
 }
 
+.in {
+    margin-left: 10px;
+}
+
 .container-1 input#search {
     overflow: hidden;
     margin-top: -15px;
     width: 350px;
     height: 40px;
-    margin-left: 66px;
+    margin-left: 15px;
     background: #f5f5f5;
     border: none;
     font-size: 10pt;

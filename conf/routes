@@ -19,13 +19,16 @@ POST    /login/submit               controllers.LoginController.login
 POST    /register/submit            controllers.LoginController.register
 
 
-
 #CourseController
 GET     /course/:id                 controllers.CourseController.index(id: Integer)
 GET     /search                     controllers.CourseController.search()
 GET     /myteachercourses           controllers.CourseController.myTeacherCourses
 GET     /mystudentcourses           controllers.CourseController.myStudentCourses
 GET     /searchbycategory/:categoryID          controllers.CourseController.searchByCategory(categoryID: Integer)
+GET     /newCourse                  controllers.CourseController.newCourse
+
++nocsrf
+POST    /course/paymentSuccess/:courseID       controllers.CourseController.signForCourse(courseID: Integer)
 
 
 
