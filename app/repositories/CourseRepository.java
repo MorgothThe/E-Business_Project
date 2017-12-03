@@ -2,6 +2,8 @@ package repositories;
 
 import io.ebean.Ebean;
 import models.Course;
+import models.CourseParticipant;
+import models.User;
 
 import java.util.List;
 
@@ -51,5 +53,15 @@ public class CourseRepository extends GenericRepository<Course> {
                 .eq("courseCategoryList.category.id", id)
                 .findList();
         return courses;
+    }
+
+    public void addParticipant(Integer id, User user){
+        Course course = findByID(id);
+        course.participants += 1;
+        Ebean.update(course);
+        CourseParticipant courseParticipant = new CourseParticipant();
+        courseParticipant.course = course;
+        courseParticipant.participant = user;
+        Ebean.save(courseParticipant);
     }
 }
