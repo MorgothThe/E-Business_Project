@@ -131,9 +131,9 @@ h1 {
 }
 
 .btn {
-    margin-top: 28px;
+    margin-top: 56px;
     float: right;
-    margin-right: -198px;
+    margin-right: -210px;
 }
 
 .unwanted {
@@ -145,7 +145,14 @@ h1 {
 }*/
 
 .no-of-parti {
-    margin-right: 76px;
+    margin-right: -100px;
     float: right;
+    margin-top: 28px;
+    font-weight: bold;
+}
+
+.price {
+    float: right;
+    margin-right: 80px;
     font-weight: bold;
 }
