@@ -5,6 +5,7 @@ import models.Course;
 import models.CourseParticipant;
 import models.User;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class CourseRepository extends GenericRepository<Course> {
@@ -63,5 +64,30 @@ public class CourseRepository extends GenericRepository<Course> {
         courseParticipant.course = course;
         courseParticipant.participant = user;
         Ebean.save(courseParticipant);
+    }
+
+    public void createNewCourse(String courseName, String courseDescription, User teacher, BigDecimal price, Integer maxParticipants){
+        Course course = new Course();
+        course.name = courseName;
+        course.description = courseDescription;
+        course.teacher = teacher;
+        course.price = price;
+        course.participants = 0;
+        course.max_participants = maxParticipants;
+        Ebean.save(course);
+    }
+
+    public boolean isSignedUp(Integer userID, Integer courseID){
+        CourseParticipant courseParticipant = Ebean.find(CourseParticipant.class)
+                .where()
+                .eq("participant.id", userID)
+                .eq("course.id", courseID)
+                .findUnique();
+        if(courseParticipant == null){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 }

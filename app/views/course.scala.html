@@ -1,4 +1,4 @@
-@(course: Course)
+@(course: Course, isSignedUp: Boolean)
 
 @scripts = {
     <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/course.css")'/>
@@ -18,12 +18,14 @@
         <div class="divhidden">
             <div><p class="price">Price: @course.price zl</p></div>
             <div><p class="no-of-parti">Number of participants: @course.participants / @course.max_participants</p></div>
+            @if(isSignedUp == false){
             <div>
 
                 <form class="btn" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
                     <input type="hidden" name="rm" value="2">
-                    <input type="hidden" name="return" value="https://get-smart-play.herokuapp.com">
+                    <input type="hidden" name="return" value="https://get-smart-play.herokuapp.com/course/paymentSuccess/@course.id">
+                    <!--<input type="hidden" name="return" value="http://127.0.0.1:9000/course/paymentSuccess/@course.id">-->
                         <!-- Identify your business so that you  can collect the payments. -->
                     <input type="hidden" name="business" value="getsmart@@gmail.com">
 
@@ -45,6 +47,10 @@
                 </form>
 
             </div>
+            }
+            @if(isSignedUp == true){
+            <p>Already signed up for this course</p>
+            }
         </div>
     </div>
 </div>
