@@ -6,6 +6,9 @@
 #HomeController
 GET     /                           controllers.HomeController.index
 
+#ProfileController
+GET     /profile                    controllers.ProfileController.index
+
 #LoginController
 GET     /login                      controllers.LoginController.index
 GET     /logout                     controllers.LoginController.logout

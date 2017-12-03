@@ -1,12 +1,14 @@
 package models;
 
+import io.ebean.Model;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name="site.user")
-public class User {
+public class User extends Model{
 
     @Id
     public Integer id;
