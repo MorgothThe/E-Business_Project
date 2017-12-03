@@ -2,6 +2,7 @@ package controllers;
 
 
 import models.Course;
+import models.User;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -14,6 +15,7 @@ import play.mvc.Result;
 import repositories.CategoryRepository;
 
 import repositories.CourseRepository;
+import repositories.UserRepository;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -27,6 +29,9 @@ public class CourseController extends Controller {
 
     @Inject
     private CourseRepository courseRepository;
+
+    @Inject
+    private UserRepository userRepository;
 
 
     @Inject
@@ -66,6 +71,12 @@ public class CourseController extends Controller {
         Integer participantID = Integer.parseInt(session().get("accountID"));
         List<Course> courseList = courseRepository.getByStudentID(participantID);
         return ok("COURSES FOR STUDENT ID: " + participantID.toString());
+    }
+
+    public void signForCourse(Integer courseID){
+        Integer participantID = Integer.parseInt(session().get("accountID"));
+        User user = userRepository.findByID(participantID);
+        courseRepository.addParticipant(courseID, user);
     }
 
 
