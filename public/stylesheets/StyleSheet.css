@@ -116,3 +116,12 @@ footer {
     background: #000000;
     color: aliceblue;
 }
+
+footer p {
+    float: left;
+    margin-top: -8px;
+}
+
+.contac {
+    float: right;
+}
