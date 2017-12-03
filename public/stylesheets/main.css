@@ -94,16 +94,22 @@ h1 {
     }
 
 footer {
-    margin-top: 10px;
-    padding: 6px;
+    margin-top: 5px;
+    padding: 20px;
     text-align: center;
     background: #000000;
     color: aliceblue;
 }
 
 footer p {
-    margin: 0;
+    margin-top: -8px;
+    float: left;
 }
+
+.contac {
+    float: right;
+}
+
 
 /* Search */
 

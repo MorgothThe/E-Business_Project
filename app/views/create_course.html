@@ -1,0 +1,23 @@
+﻿@(course: Course)
+
+@scripts = {
+<link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/create_course.css")' />
+}
+
+@main("Welcome to GetSmart", scripts, null){
+<div class="back">
+    <img  src='@routes.Assets.versioned("images/arduino.png")' alt="course_image" width="300px" length="300px" class="foto">
+</div>
+
+<div class="letters">
+    <h2 class="create-h">Name of the course:</h2>
+    <h2 class="create-h">Description of the course:</h2>
+    <h2 class="create-h">Category:</h2>
+    <h2 class="create-h">Price:</h2>
+    <h2 class="create-h">Maximum number of participants:</h2>
+</div>
+
+<div class="button-cre">
+   <a href="@routes.HomeController.index()"><input type="button" value="CREATE"  style='width:100px; height:50px'></a>
+</div>
+}
