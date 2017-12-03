@@ -20,29 +20,32 @@
             <div><p class="no-of-parti">Number of participants: @course.participants / @course.max_participants</p></div>
             <div>
 
-                <form class="btn" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                @if(session.get("username")){
+                    <form class="btn" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 
-                    <input type="hidden" name="rm" value="2">
-                    <input type="hidden" name="return" value="https://get-smart-play.herokuapp.com">
-                        <!-- Identify your business so that you  can collect the payments. -->
-                    <input type="hidden" name="business" value="getsmart@@gmail.com">
+                        <input type="hidden" name="rm" value="2">
+                        <input type="hidden" name="return" value="https://get-smart-play.herokuapp.com">
+                            <!-- Identify your business so that you  can collect the payments. -->
+                        <input type="hidden" name="business" value="getsmart@@gmail.com">
 
-                        <!-- Specify a Buy Now button. -->
-                    <input type="hidden" name="cmd" value="_xclick">
+                            <!-- Specify a Buy Now button. -->
+                        <input type="hidden" name="cmd" value="_xclick">
 
-                        <!-- Specify details about the item that buyers will purchase. -->
-                    <input type="hidden" name="item_name" value="@course.name">
-                    <input type="hidden" name="amount" value="@course.price">
-                    <input type="hidden" name="currency_code" value="PLN">
+                            <!-- Specify details about the item that buyers will purchase. -->
+                        <input type="hidden" name="item_name" value="@course.name">
+                        <input type="hidden" name="amount" value="@course.price">
+                        <input type="hidden" name="currency_code" value="PLN">
 
-                        <!-- Display the payment button. -->
-                    <input type="image" name="submit" border="0"
-                    src='@routes.Assets.versioned("images/py-btn.png")'
-                    alt="Buy Now">
-                    <img alt="" border="0" width="1" height="1"
-                    src='@routes.Assets.versioned("images/py-btn.png")' >
+                            <!-- Display the payment button. -->
+                        <input type="image" name="submit" border="0"
+                        src='@routes.Assets.versioned("images/py-btn.png")'
+                        alt="Buy Now">
+                        <img alt="" border="0" width="1" height="1"
+                        src='@routes.Assets.versioned("images/py-btn.png")' >
 
-                </form>
+                    </form>
+                }
+
 
             </div>
         </div>
