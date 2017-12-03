@@ -80,19 +80,20 @@
                        }
                      </ul>
                 </div><!--/.nav-collapse -->
-                @if(!request.uri.equals("/login")){
+                @if(!request.uri.equals("/login")) {
                     <ul>
                         <li class="box">
 
                             <div class="container-1">
                                 <span class="icon"><i class="fa fa-search"></i></span>
-                                @helper.form(routes.CourseController.search()){
+                                @helper.form(routes.CourseController.search()) {
                                     <input type="search" id="search" name="search" placeholder="Search..." />
                                 }
                             </div>
 
                         </li>
                     </ul>
+                }
                 </div><!--/.nav-collapse -->
 
             </div>
