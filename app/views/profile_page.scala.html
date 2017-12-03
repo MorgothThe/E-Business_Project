@@ -1,0 +1,23 @@
+@(user: User)
+
+@scripts = {
+  <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/profile.css")'>
+}
+
+@main("Welcome to GetSmart", scripts, null){
+
+  <div class="back">
+    <img src='@routes.Assets.versioned("images/profile.png")' alt="profile" width="300px" length="300px" class="foto">
+  </div>
+
+  <div class="letters">
+    <h2 class="profile-h">Name: @user.firstName</h2>
+    <h2 class="profile-h">Surname: @user.lastName</h2>
+    <h2 class="profile-h">Role:</h2>
+    <h2 class="profile-h">Gender:</h2>
+    <h2 class="profile-h">Telephone:</h2>
+    <h2 class="profile-h">e-mail:</h2>
+    <h2 class="profile-h">Birthday: @user.birthDate</h2>
+  </div>
+
+}
