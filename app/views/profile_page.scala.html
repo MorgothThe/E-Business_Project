@@ -7,17 +7,19 @@
 @main("Welcome to GetSmart", scripts, null){
 
   <div class="back">
-    <img src='@routes.Assets.versioned("images/profile.png")' alt="profile" width="300px" length="300px" class="foto">
+    <img src='@routes.Assets.versioned("images/profile.png")' alt="profile" width="150" length="150" class="foto">
   </div>
 
   <div class="letters">
-    <h2 class="profile-h">Name: @user.firstName</h2>
-    <h2 class="profile-h">Surname: @user.lastName</h2>
-    <h2 class="profile-h">Role:</h2>
-    <h2 class="profile-h">Gender:</h2>
-    <h2 class="profile-h">Telephone:</h2>
-    <h2 class="profile-h">e-mail:</h2>
-    <h2 class="profile-h">Birthday: @user.birthDate</h2>
+    <div class="edit"><button class="edit-btn">edit</button></div>
+    <h2 class="profile-h">Name: @user.firstName <p>John</p><input class="profile-input" type="text"/></h2>
+    <h2 class="profile-h">Surname: @user.lastName <p>Doe</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Role: <p>Teacher</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Gender: <p>M</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Telephone: <p>000-009-77</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">e-mail: <p>John&#64;hi.com</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Birthday: @user.birthDate <p>23.04.98</p><input class="profile-input" type="text" /></h2>
   </div>
+<script type="text/javascript" src='@routes.Assets.versioned("javascripts/input.js")'></script>
 
 }

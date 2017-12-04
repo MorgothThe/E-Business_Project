@@ -43,7 +43,7 @@ h1 {
 }
 
 #navbar {
-    margin-top: -31px;
+    margin-top: -2em;
     float: right;
 }
 
@@ -115,7 +115,7 @@ footer p {
 
 .container-1 input#search {
     overflow: hidden;
-    margin-top: -15px;
+    margin-top: -1em;
     width: 350px;
     height: 40px;
     margin-left: 66px;
