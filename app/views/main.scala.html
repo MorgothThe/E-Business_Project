@@ -76,7 +76,9 @@
                             <li><a href="@routes.ProfileController.index()">Profile</a></li>
                         }
 
+                        @if(session.get("role") == "Teacher"){
                         <li><a href="@routes.CourseController.newCourse()">Create</a></li>
+                        }
 
                         @if(session.get("username")){
                         <li><a href="@routes.LoginController.logout()">Logout</a></li>
