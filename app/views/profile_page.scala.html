@@ -1,4 +1,4 @@
-@(user: User, account: Account, role: Role)
+@(user: User, account: Account, role: Role, contact: Contact)
 
 @scripts = {
   <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/profile.css")'>
@@ -6,7 +6,7 @@
 
 @main("Welcome to GetSmart", scripts, null){
 
-  @if(!flash.containsKey("date-format")) {
+  @if(flash.containsKey("date-format")) {
     <div class="alert alert-danger alert-dismissable">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       @flash.get("date-format")
@@ -23,9 +23,9 @@
       <h2 class="profile-h">Name: <p>@user.firstName</p><input class="profile-input" type="text" name="name" value="@user.firstName"/></h2>
       <h2 class="profile-h">Surname: <p>@user.lastName</p><input class="profile-input" type="text" name="surname" value="@user.lastName"/></h2>
       <h2 class="profile-h">Role: <p>@role.role_name</p><input class="profile-input" type="text" value="@role.role_name" disabled/></h2>
-      <h2 class="profile-h">Telephone: <p>000-009-77</p><input class="profile-input" type="text" name="telephone" value=""/></h2>
+      <h2 class="profile-h">Telephone: <p>@contact.contact</p><input class="profile-input" type="text" name="telephone" value=""/></h2>
       <h2 class="profile-h">e-mail: <p>@account.email</p><input class="profile-input" type="text" name="email" value="@account.email"/></h2>
-      <h2 class="profile-h">Birthday: <p>@user.birthDate.format("YYYY-MM-dd")</p><input class="profile-input" type="text" name="birthday" value="@user.birthDate.format("YYYY-MM-dd")"/></h2>
+      <h2 class="profile-h">Birthday: <p>@if(user.birthDate != null) {@user.birthDate.format("YYYY-MM-dd")}</p><input class="profile-input" type="text" name="birthday" @if(user.birthDate != null) { value="@user.birthDate.format("YYYY-MM-dd")"}/></h2>
       <button class="profile-input">Submit</button>
     </form>
 

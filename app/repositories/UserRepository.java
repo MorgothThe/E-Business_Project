@@ -16,4 +16,14 @@ public class UserRepository extends GenericRepository<User> {
         Ebean.save(user);
     }
 
+    public User getUserWithContact(Integer userID){
+        User user = Ebean.find(typeParameterClass)
+                .fetch("contactList")
+                .fetch("contactList.contactType")
+                .where()
+                .eq("id", userID)
+                .findUnique();
+        return user;
+    }
+
 }
