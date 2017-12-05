@@ -1,10 +1,12 @@
 package models;
 
+import io.ebean.Model;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name="site.contact")
-public class Contact {
+public class Contact extends Model{
 
     @Id
     public Integer id;
