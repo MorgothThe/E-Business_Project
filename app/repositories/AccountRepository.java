@@ -109,7 +109,7 @@ public class AccountRepository extends GenericRepository<Account> {
 
 
 
-    public void createAccount(String username, String passwordHash, String passwordSalt, String email){
+    public void createAccount(String username, String passwordHash, String passwordSalt, String email, Role role){
         Account account = new Account();
         account.username = username;
         account.passwordHash = passwordHash;
@@ -117,11 +117,18 @@ public class AccountRepository extends GenericRepository<Account> {
         account.email = email;
         account.isConfirmed = false;
 
+
         Date date = new Date();
         account.lastLogin = date;
         account.passwordChanged = date;
         account.createdAt = date;
 
+        AccountRole accountRole = new AccountRole();
+        accountRole.account = account;
+        accountRole.role = role;
+
+    //        AccountRepository accountRepository = new AccountRepository();
+    //        accountRepository.add(accountRole);
         Ebean.save(account);
     }
 

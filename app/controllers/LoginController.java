@@ -1,15 +1,18 @@
 package controllers;
 
 import common.PasswordManager;
+import models.Category;
 import models.Role;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import repositories.AccountRepository;
+import repositories.RoleRepository;
 import repositories.UserRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class LoginController extends Controller {
 
@@ -22,8 +25,14 @@ public class LoginController extends Controller {
     @Inject
     private UserRepository userRepository;
 
+    @Inject
+    private RoleRepository roleRepository;
+
     public Result index(){
-        return ok(views.html.login.render());
+
+        List<Role> roles = roleRepository.getAll();
+
+        return ok(views.html.login.render(roles));
     }
 
     public Result login(){
@@ -78,12 +87,16 @@ public class LoginController extends Controller {
         String username = dynamicForm.get("registerUsername");
         String password = dynamicForm.get("registerPassword");
         String email = dynamicForm.get("registerEmail");
+        String rolename = dynamicForm.get("role");
+        Role role = roleRepository.getByRoleName(rolename);
+
+
         if(!accountRepository.usernameExist(username) && !accountRepository.emailExist(email))
         {
             PasswordManager passwordManager = new PasswordManager();
             String salt = passwordManager.generateSalt();
             String hashedPassword = passwordManager.hashPassword(password, salt);
-            accountRepository.createAccount(username, hashedPassword, salt, email);
+            accountRepository.createAccount(username, hashedPassword, salt, email, role);
             Integer accountID = accountRepository.getID(username);
             userRepository.createUser(accountID);
             flash("new-user", "User successfully created!");

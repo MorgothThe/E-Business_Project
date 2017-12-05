@@ -14,7 +14,7 @@
         <h2 class="create-h">Name of the course:<input class="in" type="text" name="courseName"/></h2>
         <h2 class="create-h">Description of the course:<input class="in" type="text" name="courseDescription"/></h2>
         <h2 class="create-h">Categories:
-            <select>
+            <select name="role">
             @if(categories != null){
             @for(category <- categories){
             <option value="@category.name">@category.name</option>
