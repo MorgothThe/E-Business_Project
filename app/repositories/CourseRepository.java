@@ -3,9 +3,12 @@ package repositories;
 import io.ebean.Ebean;
 import models.Course;
 import models.CourseParticipant;
+import models.Currency;
 import models.User;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public class CourseRepository extends GenericRepository<Course> {
@@ -66,7 +69,7 @@ public class CourseRepository extends GenericRepository<Course> {
         Ebean.save(courseParticipant);
     }
 
-    public void createNewCourse(String courseName, String courseDescription, User teacher, BigDecimal price, Integer maxParticipants){
+    public void createNewCourse(String courseName, String courseDescription, User teacher, BigDecimal price, Integer maxParticipants, Integer numberOfMeetings){
         Course course = new Course();
         course.name = courseName;
         course.description = courseDescription;
@@ -74,6 +77,16 @@ public class CourseRepository extends GenericRepository<Course> {
         course.price = price;
         course.participants = 0;
         course.max_participants = maxParticipants;
+
+        //default currency for testing - cannot be null
+        CurrencyRepository currencyRepository = new CurrencyRepository();
+        course.currency = currencyRepository.findByID(1);
+
+        //default value
+        course.mettings = numberOfMeetings;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        course.created_at = timestamp;
+
         Ebean.save(course);
     }
 

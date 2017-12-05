@@ -1,6 +1,7 @@
 package controllers;
 
 import common.PasswordManager;
+import models.Role;
 import play.data.DynamicForm;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -40,6 +41,12 @@ public class LoginController extends Controller {
                 session("username", username);
                 Integer accountID = accountRepository.getID(username);
                 session("accountID", accountID.toString());
+                Role userRole = accountRepository.getRole(username);
+                if(userRole != null){
+                    session("role", userRole.role_name);
+                }else{
+                    session("role", "none");
+                }
                 flash("logged-in", "User has been succesfully logged in!");
                 return redirect("/");
             }
@@ -61,6 +68,7 @@ public class LoginController extends Controller {
         flash("logged-out", "You have successfully logged out");
         session().remove("username");
         session().remove("accountID");
+        session().remove("role");
 
         return redirect("/");
     }

@@ -34,6 +34,9 @@ GET     /newCourse                  controllers.CourseController.newCourse
 +nocsrf
 POST    /course/paymentSuccess/:courseID       controllers.CourseController.signForCourse(courseID: Integer)
 
++nocsrf
+POST   /course/createNewCourse      controllers.CourseController.createNewCourse()
+
 
 
 # Map static resources from the /public folder to the /assets URL path

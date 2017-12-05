@@ -102,6 +102,7 @@ public class AccountRepository extends GenericRepository<Account> {
         Role role = null;
         for (AccountRole accountRole : fetchedAccount.accountRoleList) {
             role = accountRole.role;
+            return role;
         }
         return role;
     }
