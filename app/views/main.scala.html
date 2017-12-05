@@ -80,6 +80,10 @@
                         <li><a href="@routes.CourseController.newCourse()">Create</a></li>
                         }
 
+                        @if(session.get("role") == "Student"){
+                            <li><a href="@routes.CourseController.myStudentCourses()">My courses</a></li>
+                        }
+
                         @if(session.get("username")){
                         <li><a href="@routes.LoginController.logout()">Logout</a></li>
 
