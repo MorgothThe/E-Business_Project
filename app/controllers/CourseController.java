@@ -71,14 +71,13 @@ public class CourseController extends Controller {
     public Result myTeacherCourses(){
         Integer teacherID = Integer.parseInt(session().get("accountID"));
         List<Course> courseList = courseRepository.getByTeacherID(teacherID);
-        return ok("COURSES FOR TEACHER ID: " + teacherID.toString());
+        return ok(views.html.mycourse.render(courseList));
     }
 
     public Result myStudentCourses(){
         Integer participantID = Integer.parseInt(session().get("accountID"));
         List<Course> courseList = courseRepository.getByStudentID(participantID);
         return ok(views.html.mycourse.render(courseList));
-//        return ok("COURSES FOR STUDENT ID: " + participantID.toString());
     }
 
     public Result signForCourse(Integer courseID){
