@@ -9,6 +9,10 @@ GET     /                           controllers.HomeController.index
 #ProfileController
 GET     /profile                    controllers.ProfileController.index
 
++nocsrf
+POST    /profile/edit               controllers.ProfileController.editCredidentials
+
+
 #LoginController
 GET     /login                      controllers.LoginController.index
 GET     /logout                     controllers.LoginController.logout

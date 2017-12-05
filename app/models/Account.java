@@ -1,6 +1,8 @@
 package models;
 
 
+import io.ebean.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "security.account")
-public class Account{
+public class Account extends Model{
 
     @Id
     public Integer id;

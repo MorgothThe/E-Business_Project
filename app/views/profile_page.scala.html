@@ -6,18 +6,30 @@
 
 @main("Welcome to GetSmart", scripts, null){
 
+  @if(!flash.containsKey("date-format")) {
+    <div class="alert alert-danger alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      @flash.get("date-format")
+    </div>
+  }
+
   <div class="back">
     <img src='@routes.Assets.versioned("images/profile.png")' alt="profile" width="150" length="150" class="foto">
   </div>
 
   <div class="letters">
-    <div class="edit"><button class="edit-btn">edit</button></div>
-    <h2 class="profile-h">Name: <p>@user.firstName</p><input class="profile-input" type="text"/></h2>
-    <h2 class="profile-h">Surname: <p>@user.lastName</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Role: <p>@role.role_name</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Telephone: <p>000-009-77</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">e-mail: <p>@account.email</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Birthday: <p>@user.birthDate</p><input class="profile-input" type="text" /></h2>
+    <div class="edit"><button class="edit-btn" onsubmit="validateForm(this)" >edit</button></div>
+    <form name="editProfile" class="register-form" method="post" action="@routes.ProfileController.editCredidentials">
+      <h2 class="profile-h">Name: <p>@user.firstName</p><input class="profile-input" type="text" name="name" value="@user.firstName"/></h2>
+      <h2 class="profile-h">Surname: <p>@user.lastName</p><input class="profile-input" type="text" name="surname" value="@user.lastName"/></h2>
+      <h2 class="profile-h">Role: <p>@role.role_name</p><input class="profile-input" type="text" value="@role.role_name" disabled/></h2>
+      <h2 class="profile-h">Telephone: <p>000-009-77</p><input class="profile-input" type="text" name="telephone" value=""/></h2>
+      <h2 class="profile-h">e-mail: <p>@account.email</p><input class="profile-input" type="text" name="email" value="@account.email"/></h2>
+      <h2 class="profile-h">Birthday: <p>@user.birthDate.format("YYYY-MM-dd")</p><input class="profile-input" type="text" name="birthday" value="@user.birthDate.format("YYYY-MM-dd")"/></h2>
+      <button class="profile-input">Submit</button>
+    </form>
+
+
   </div>
 <script type="text/javascript" src='@routes.Assets.versioned("javascripts/input.js")'></script>
 
