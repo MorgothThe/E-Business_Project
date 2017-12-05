@@ -91,6 +91,21 @@ public class AccountRepository extends GenericRepository<Account> {
         return roles;
     }
 
+    public Role getRole(String username){
+        Account fetchedAccount = Ebean.find(typeParameterClass)
+                .fetch("accountRoleList")
+                .fetch("accountRoleList.role")
+                .where()
+                .eq("username", username)
+                .findUnique();
+
+        Role role = null;
+        for (AccountRole accountRole : fetchedAccount.accountRoleList) {
+            role = accountRole.role;
+        }
+        return role;
+    }
+
 
 
     public void createAccount(String username, String passwordHash, String passwordSalt, String email){

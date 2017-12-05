@@ -15,4 +15,5 @@ public class UserRepository extends GenericRepository<User> {
 
         Ebean.save(user);
     }
+
 }

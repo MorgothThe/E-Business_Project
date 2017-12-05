@@ -1,4 +1,4 @@
-@(user: User)
+@(user: User, account: Account, role: Role)
 
 @scripts = {
   <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/profile.css")'>
@@ -12,13 +12,12 @@
 
   <div class="letters">
     <div class="edit"><button class="edit-btn">edit</button></div>
-    <h2 class="profile-h">Name: @user.firstName <p>John</p><input class="profile-input" type="text"/></h2>
-    <h2 class="profile-h">Surname: @user.lastName <p>Doe</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Role: <p>Teacher</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Gender: <p>M</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Name: <p>@user.firstName</p><input class="profile-input" type="text"/></h2>
+    <h2 class="profile-h">Surname: <p>@user.lastName</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Role: <p>@role.role_name</p><input class="profile-input" type="text" /></h2>
     <h2 class="profile-h">Telephone: <p>000-009-77</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">e-mail: <p>John&#64;hi.com</p><input class="profile-input" type="text" /></h2>
-    <h2 class="profile-h">Birthday: @user.birthDate <p>23.04.98</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">e-mail: <p>@account.email</p><input class="profile-input" type="text" /></h2>
+    <h2 class="profile-h">Birthday: <p>@user.birthDate</p><input class="profile-input" type="text" /></h2>
   </div>
 <script type="text/javascript" src='@routes.Assets.versioned("javascripts/input.js")'></script>
 
