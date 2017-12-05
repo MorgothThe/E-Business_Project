@@ -1,0 +1,27 @@
+@(courses: List[Course])
+
+@scripts = {
+  <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+}
+
+@main("Welcome to GetSmart", scripts, null) {
+
+  <section id="boxes">
+    <div class="containers">
+    @for(course <- courses){
+      <div class="box">
+        <a href="@routes.CourseController.index(course.id)">
+          <img width="150" height="150" src='@routes.Assets.versioned("images/arduino.png")'/>
+        </a>
+        <a href="@routes.CourseController.index(course.id)"><h3>@course.name</h3></a>
+        <p>
+        @course.description
+        </p>
+
+
+        @course.price
+      </div>
+    }
+    </div>
+  </section>
+}

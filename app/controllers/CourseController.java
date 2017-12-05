@@ -77,7 +77,8 @@ public class CourseController extends Controller {
     public Result myStudentCourses(){
         Integer participantID = Integer.parseInt(session().get("accountID"));
         List<Course> courseList = courseRepository.getByStudentID(participantID);
-        return ok("COURSES FOR STUDENT ID: " + participantID.toString());
+        return ok(views.html.mycourse.render(courseList));
+//        return ok("COURSES FOR STUDENT ID: " + participantID.toString());
     }
 
     public Result signForCourse(Integer courseID){
