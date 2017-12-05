@@ -50,6 +50,12 @@
             @flash.get("signed-up-for-course")
         </div>
     }
+    @if(flash.containsKey("course-created")) {
+    <div class="alert alert-success alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        @flash.get("course-created")
+    </div>
+    }
 
     <section id="showcase">
         <div class="container">

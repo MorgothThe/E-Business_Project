@@ -89,7 +89,8 @@ public class CourseController extends Controller {
     }
 
     public Result newCourse(){
-        return ok(views.html.create_course.render());
+        List<Category> categories = categoryRepository.getAll();
+        return ok(views.html.create_course.render(categories));
     }
 
     public Result createNewCourse(){
@@ -102,16 +103,18 @@ public class CourseController extends Controller {
         BigDecimal price = new BigDecimal(stringPrice.replaceAll(",", ""));
 
         Integer maxParticipants = Integer.parseInt(dynamicForm.get("maxParticipant"));
+        Integer numberOfMeetings = Integer.parseInt(dynamicForm.get("numberOfMeetings"));
 
         Integer teacherID = Integer.parseInt(session().get("accountID"));
         User teacher = userRepository.findByID(teacherID);
 
-        courseRepository.createNewCourse(courseName, courseDescription, teacher, price, maxParticipants);
+        courseRepository.createNewCourse(courseName, courseDescription, teacher, price, maxParticipants, numberOfMeetings);
 
         //currency
         //mettings
 
-        return ok("New course created");
+        flash("course-created", "New course was successfully created");
+        return redirect("/");
     }
 
 

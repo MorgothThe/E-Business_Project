@@ -138,7 +138,7 @@ h1 {
 }
 
 .btn {
-    margin-top: 56px;
+    margin-top: 78px;
     float: right;
     margin-right: -210px;
 }
@@ -152,6 +152,13 @@ h1 {
     margin-right: -100px;
     float: right;
     margin-top: 28px;
+    font-weight: bold;
+}
+
+.meetings {
+    margin-right: -200px;
+    float: right;
+    margin-top: 52px;
     font-weight: bold;
 }
 

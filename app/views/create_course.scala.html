@@ -1,3 +1,4 @@
+@(categories: List[Category])
 
 @scripts = {
 <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/create_course.css")' />
@@ -9,12 +10,22 @@
 </div>
 
 <div class="letters">
-    <h2 class="create-h">Name of the course:<input class="in" type="text"/></h2>
-    <h2 class="create-h">Description of the course:<input class="in" type="text"/></h2>    <h2 class="create-h">Price:<input class="in" type="text"/></h2>
-    <h2 class="create-h">Maximum number of participants:<input class="in" type="text"/></h2>
+    <form class="register-form" method="post" action="@routes.CourseController.createNewCourse">
+        <h2 class="create-h">Name of the course:<input class="in" type="text" name="courseName"/></h2>
+        <h2 class="create-h">Description of the course:<input class="in" type="text" name="courseDescription"/></h2>
+        <h2 class="create-h">Categories:
+            <select>
+            @if(categories != null){
+            @for(category <- categories){
+            <option value="@category.name">@category.name</option>
+            }}
+            </select>
+        </h2>
+        <h2 class="create-h">Price:<input class="in" type="text" name="price"/></h2>
+        <h2 class="create-h">Number of meetings:<input class="in" type="text" name="numberOfMeetings"/></h2>
+        <h2 class="create-h">Maximum number of participants:<input class="in" type="text" name="maxParticipant"/></h2>
+        <button>Create</button>
+    </form>
 </div>
 
-<div class="button-cre">
-   <a href="@routes.HomeController.index()"><input class="btnn" type="button" value="CREATE"></a>
-</div>
 }
